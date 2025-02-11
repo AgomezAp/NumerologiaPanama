@@ -1,0 +1,19 @@
+<app-particles class="particulas"></app-particles>
+
+<div class="background">
+
+    <h1 [@fadeIn] >Bienvenido al Número de la Fortuna</h1>
+    <div class="content-container" [@fadeIn]>
+      <div id="screen1" class="screen" [@fadeIn]>
+        <main [@fadeIn]>
+          <p>Descubre el número que el destino tiene preparado para ti, te guiaremos en un viaje para encontrar tu suerte y significado.</p>
+          <div class="button-container">
+            <button id="startButton" (click)="redirect()">Comenzar</button>
+          </div>
+        </main>
+      </div>
+    </div>
+    <footer>
+      &copy; 2025 Número de la Fortuna. Todos los derechos reservados.
+    </footer>
+  </div>

@@ -1,0 +1,48 @@
+<app-particles class="particulas"></app-particles>
+<div class="background">
+    <div id="screen2" class="screen"[@fadeIn]>
+      <h1>Tu Información</h1>
+      <div class="content-container">
+        <main>
+          <p>Por favor ingresa tus datos para calcular tu número de la fortuna.</p>
+          <form [formGroup]="infoForm" (ngSubmit)="onSubmit()" class="form" novalidate>
+            <label for="nombreCliente">Nombre Completo:</label>
+            <input
+              type="text"
+              id="nombreCliente"
+              formControlName="nombreCliente"
+              placeholder="Escribe tu nombre completo"
+            />
+            <div *ngIf="infoForm.get('nombreCliente')?.touched && infoForm.get('nombreCliente')?.invalid" class="error-message">
+              <small *ngIf="infoForm.get('nombreCliente')?.errors?.['required']">El nombre completo es obligatorio.</small>
+            </div>
+  
+            <label for="birthDate">Fecha de Nacimiento:</label>
+            <input type="date" id="birthDate" formControlName="birthDate"[max]="maxDate"  />
+            <div *ngIf="infoForm.get('birthDate')?.touched && infoForm.get('birthDate')?.invalid" class="error-message">
+              <small *ngIf="infoForm.get('birthDate')?.errors?.['required']">La fecha de nacimiento es obligatoria.</small>
+            </div>
+  
+            <label for="gender">Género:</label>
+            <select id="gender" formControlName="gender">
+              <option value="" disabled selected>Selecciona tu género</option>
+              <option value="masculino">Masculino</option>
+              <option value="femenino">Femenino</option>
+              <option value="otro">Otro</option>
+            </select>
+            <div *ngIf="infoForm.get('gender')?.touched && infoForm.get('gender')?.invalid" class="error-message">
+              <small *ngIf="infoForm.get('gender')?.errors?.['required']">El género es obligatorio.</small>
+            </div>
+  
+            <div class="buttons">
+              <button type="submit" [disabled]="infoForm.invalid" id="continueButton" class="continueButton">Continuar</button>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div>
+    <footer>
+      &copy; 2025 Número de la Fortuna. Todos los derechos reservados.
+    </footer>
+  </div>
+  

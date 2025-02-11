@@ -1,0 +1,31 @@
+<app-particles class="particulas"></app-particles>
+<div class="background">
+  <div id="casinoMachine" class="casinoMachine" [@fadeIn]>
+    <h1>Tu Número de la Suerte</h1>
+    <div class="content-container">
+      <main>
+        <!-- Pantalla: Máquina tipo casino -->
+        <section id="screen5-1" class="screen" *ngIf="true">
+          <p>Haz click en el botón girar para obtener tu mensaje de la suerte.</p>
+          <div class="slot-machine">
+            <div class="slot" id="slot1">
+              <img [src]="slot1Src"  />
+            </div>
+            <div class="slot" id="slot2">
+              <img [src]="slot2Src"  />
+            </div>
+            <div class="slot" id="slot3">
+              <img [src]="slot3Src"  />
+            </div>
+          </div>
+          <div class="button-container">
+            <button id="empezar" class="empezar" (click)="startSpinSlots()">Girar</button>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <footer>
+    &copy; 2025 Número de la Fortuna. Todos los derechos reservados.
+  </footer>
+</div>

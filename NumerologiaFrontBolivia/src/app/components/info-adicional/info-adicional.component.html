@@ -1,0 +1,44 @@
+<app-particles class="particulas"></app-particles>
+<div class="background">
+    <h1 [@fadeIn]>Información Adicional</h1>
+<div class="content-container"[@fadeIn]>
+  <section id="screen3" class="screen">
+    <!-- Contenedor principal -->
+    <main>
+      <p>Proporciona algunos detalles adicionales para personalizar tu experiencia.</p>
+      <!-- Formulario de información adicional -->
+      <form [formGroup]="additionalInfoForm" (ngSubmit)="onSubmit()">
+        <!-- Campo: Estado de Ánimo -->
+        <label for="mood">¿Cómo te sientes hoy?</label>
+        <select id="mood" formControlName="mood" class="narrow-select" required>
+          <option value="" disabled selected>Selecciona tu estado de ánimo</option>
+          <option value="feliz">Feliz</option>
+          <option value="triste">Triste</option>
+          <option value="disgustado">Disgustado/a</option>
+          <option value="miedo">Con miedo</option>
+          <option value="enojado">Enojado/a</option>
+        </select>
+        <div *ngIf="additionalInfoForm.get('mood')?.invalid && (additionalInfoForm.get('mood')?.dirty || additionalInfoForm.get('mood')?.touched)" class="warning">
+          <i class="fas fa-exclamation-circle"></i> Debes seleccionar tu estado de ánimo.
+        </div>
+
+        <!-- Campo: Pregunta personalizada -->
+        <label for="focus">¿Por qué te interesa tu número de la suerte?</label>
+        <select id="focus" formControlName="focus" class="narrow-select" required>
+          <option value="" disabled selected>Selecciona una razón</option>
+          <option value="amor">Amor</option>
+          <option value="trabajo">Trabajo</option>
+          <option value="salud">Salud</option>
+          <option value="dinero">Dinero</option>
+        </select>
+        <div *ngIf="additionalInfoForm.get('focus')?.invalid && (additionalInfoForm.get('focus')?.dirty || additionalInfoForm.get('focus')?.touched)" class="warning">
+          <i class="fas fa-exclamation-circle"></i> Debes seleccionar una razón.
+        </div>
+
+        <!-- Botón de envío -->
+        <button type="submit"class="continueButton" id="continueButton">Enviar</button>
+      </form>
+    </main>
+  </section>
+</div>
+</div>

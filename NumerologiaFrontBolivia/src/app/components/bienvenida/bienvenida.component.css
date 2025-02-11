@@ -1,0 +1,187 @@
+
+.background {
+  background: url("/Fondo.jpg") no-repeat center center fixed;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: -10px;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-bottom: -10px;
+  overflow: hidden;
+  z-index: 1;
+}
+.particulas{
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+}
+.content-container {
+  display: flex;
+  font-family: Arial, sans-serif;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 40%;
+  padding: 20px;
+  margin-top: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+@keyframes goldenGlow {
+
+  0%,
+  100% {
+    text-shadow:
+      0 1px 2px rgba(255, 255, 255, 0.6),
+      0 0 10px rgba(255, 215, 0, 0.5),
+      0 0 20px rgba(255, 215, 0, 0.4);
+  }
+
+  50% {
+    text-shadow:
+      0 1px 2px rgba(255, 255, 255, 0.6),
+      0 0 15px rgba(255, 215, 0, 0.7),
+      0 0 30px rgba(255, 215, 0, 0.6);
+    /* Brillo dorado más intenso. */
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  /* Empieza completamente transparente. */
+  to {
+    opacity: 1;
+  }
+
+  /* Termina completamente visible. */
+}
+
+h1 {
+  font-family: Arial, sans-serif;
+  color: #fff;
+  font-size: 2.5rem;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6),
+    0 0 10px rgba(255, 215, 0, 0.5),
+    0 0 20px rgba(255, 215, 0, 0.4);
+  animation: goldenGlow 5s infinite;
+}
+
+p {
+  font-family: Arial, sans-serif;
+  color: white;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+footer {
+  font-family: Arial, sans-serif;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 2s ease-out;
+}
+
+
+button {
+  background: linear-gradient(45deg, #ffdd44, #bb8800);
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), 0 0 8px rgba(255, 221, 68, 0.7);
+  transition: transform 0.3s ease, box-shadow 0.3s ease
+}
+
+/* Estilos del botón al pasar el mouse */
+button:hover {
+  transform: scale(1.15);
+  /* Agranda el botón ligeramente */
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    /* Sombra inicial */
+    0 0 25px rgba(203, 161, 53, 1);
+  /* Brillo dorado sutil */
+}
+
+button:active {
+  transform: scale(0.95);
+  /* Reduce ligeramente el tamaño */
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    /* Sombra reducida */
+    0 0 10px rgba(255, 255, 255, 0.6);
+  /* Brillo blanco reducido */
+  background: linear-gradient(45deg, #b68e4c, #8f6f2d);
+  /* Gradiente más oscuro para el efecto de clic */
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  .background {
+    background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -10px;
+    overflow: hidden;
+  }
+
+  .content-container {
+    width: 90%;
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1em;
+    text-align: center;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  button {
+    font-size: 1em;
+    padding: 10px 20px;
+  }
+
+  .card-description {
+    font-size: 0.9em;
+    padding: 5px;
+  }
+}
