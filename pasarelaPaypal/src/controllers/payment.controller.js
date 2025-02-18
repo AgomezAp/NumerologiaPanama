@@ -1,10 +1,11 @@
 import axios from 'axios';
 import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
 
 dotenv.config();
 
 
-const { PAYPAL_API_CLIENT, PAYPAL_API_SECRET,PAYPAL_API,HOST } = process.env;
+const { PAYPAL_API_CLIENT, PAYPAL_API_SECRET,PAYPAL_API,HOST,SECRET_KEY } = process.env;
 
 
 export const createOrder = async (req, res) => {
@@ -88,15 +89,22 @@ export const captureOrder = async (req, res) => {
       }
     );
 
-    console.log("*************************************************",response.data.status);
-
-    if (response.data.status === "COMPLETED") {
-      // Pago aprobado
-      return res.redirect(`http://localhost:4200/result?status=COMPLETED`);
-    } else {
-      // Pago no aprobado
-      return res.redirect(`http://localhost:4200/result?status=NOT_COMPLETED`);
-    }
+       if (response.data.status === "COMPLETED") {
+         const approvalToken = jwt.sign(
+           { status: 'approved', timestamp: Date.now() },
+           SECRET_KEY,
+           { expiresIn: '1m' }
+         );
+         /* return res.redirect(`https://numerologiabolivia/result?status=COMPLETED&token=${approvalToken}`); */
+         return res.redirect(`http://localhost:4200/result?status=COMPLETED&token=${approvalToken}`);
+       } else {
+         const rejectToken = jwt.sign(
+           { status: 'not_approved', timestamp: Date.now() },
+           SECRET_KEY,
+           { expiresIn: '1m' }
+         );
+         return res.redirect(`http://localhost:4200/result?status=COMPLETED&token=${rejectToken}`);
+       }
   } catch (error) {
     if (error.response) {
       console.error('Error de PayPal:', error.response.data);
