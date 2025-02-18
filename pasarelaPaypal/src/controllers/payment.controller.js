@@ -96,14 +96,14 @@ export const captureOrder = async (req, res) => {
            { expiresIn: '1m' }
          );
          /* return res.redirect(`https://numerologiabolivia/result?status=COMPLETED&token=${approvalToken}`); */
-         return res.redirect(`http://localhost:4200/result?status=COMPLETED&token=${approvalToken}`);
+         return res.redirect(`https://numerologiapanama.com/result?status=COMPLETED&token=${approvalToken}`);
        } else {
          const rejectToken = jwt.sign(
            { status: 'not_approved', timestamp: Date.now() },
            SECRET_KEY,
            { expiresIn: '1m' }
          );
-         return res.redirect(`http://localhost:4200/result?status=COMPLETED&token=${rejectToken}`);
+         return res.redirect(`https://numerologiapanama.com/result?status=COMPLETED&token=${rejectToken}`);
        }
   } catch (error) {
     if (error.response) {
@@ -111,7 +111,7 @@ export const captureOrder = async (req, res) => {
       // Redirige o responde según el código de error
       if(error.response.status === 422){
         // Ejemplo: redirige a una URL de error definida
-        return res.redirect(`http://localhost:4200/result?status=NOT_COMPLETED`);//cambiar esta url por una cuando se tenga el front que va a manejar errores 
+        return res.redirect(`https://numerologiapanama.com/result?status=NOT_COMPLETED`);//cambiar esta url por una cuando se tenga el front que va a manejar errores 
       }
       return res.status(error.response.status).json(error.response.data);
     } else {
