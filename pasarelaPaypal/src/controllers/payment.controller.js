@@ -16,7 +16,7 @@ export const createOrder = async (req, res) => {
         {
           amount: {
             currency_code: "USD",
-            value: "20.00",
+            value: "15.00",
           },
         },
       ],
@@ -39,7 +39,7 @@ export const createOrder = async (req, res) => {
     const {
       data: { access_token },
     } = await axios.post(
-      "https://api-m.sandbox.paypal.com/v1/oauth2/token",
+      "https://api-m.paypal.com/v1/oauth2/token",
       params,
       {
         headers: {
@@ -95,7 +95,6 @@ export const captureOrder = async (req, res) => {
            SECRET_KEY,
            { expiresIn: '1m' }
          );
-         /* return res.redirect(`https://numerologiabolivia/result?status=COMPLETED&token=${approvalToken}`); */
          return res.redirect(`https://numerologiapanama.com/result?status=COMPLETED&token=${approvalToken}`);
        } else {
          const rejectToken = jwt.sign(
@@ -111,7 +110,7 @@ export const captureOrder = async (req, res) => {
       // Redirige o responde según el código de error
       if(error.response.status === 422){
         // Ejemplo: redirige a una URL de error definida
-        return res.redirect(`https://numerologiapanama.com/result?status=NOT_COMPLETED`);//cambiar esta url por una cuando se tenga el front que va a manejar errores 
+        return res.redirect(`https://numerologiapanama.com/result?status=NOT_COMPLETED`);
       }
       return res.status(error.response.status).json(error.response.data);
     } else {
