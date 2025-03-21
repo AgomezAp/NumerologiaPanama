@@ -6,34 +6,44 @@
         <main>
           <p>Por favor ingresa tus datos para calcular tu número de la fortuna.</p>
           <form [formGroup]="infoForm" (ngSubmit)="onSubmit()" class="form" novalidate>
-            <label for="nombreCliente">Nombre Completo:</label>
+            <label for="Nombre">Nombre Completo:</label>
             <input
               type="text"
-              id="nombreCliente"
-              formControlName="nombreCliente"
+              id="Nombre"
+              formControlName="Nombre"
               placeholder="Escribe tu nombre completo"
             />
             <div *ngIf="infoForm.get('nombreCliente')?.touched && infoForm.get('nombreCliente')?.invalid" class="error-message">
               <small *ngIf="infoForm.get('nombreCliente')?.errors?.['required']">El nombre completo es obligatorio.</small>
             </div>
   
-            <label for="birthDate">Fecha de Nacimiento:</label>
-            <input type="date" id="birthDate" formControlName="birthDate"[max]="maxDate"  />
-            <div *ngIf="infoForm.get('birthDate')?.touched && infoForm.get('birthDate')?.invalid" class="error-message">
-              <small *ngIf="infoForm.get('birthDate')?.errors?.['required']">La fecha de nacimiento es obligatoria.</small>
+            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" formControlName="fecha_nacimiento"[max]="maxDate"  />
+            <div *ngIf="infoForm.get('fecha_nacimiento')?.touched && infoForm.get('fecha_nacimiento')?.invalid" class="error-message">
+              <small *ngIf="infoForm.get('fecha_nacimiento')?.errors?.['required']">La fecha de nacimiento es obligatoria.</small>
             </div>
   
-            <label for="gender">Género:</label>
-            <select id="gender" formControlName="gender">
+            <label for="genero">Género:</label>
+            <select id="genero" formControlName="genero">
               <option value="" disabled selected>Selecciona tu género</option>
               <option value="masculino">Masculino</option>
               <option value="femenino">Femenino</option>
               <option value="otro">Otro</option>
             </select>
-            <div *ngIf="infoForm.get('gender')?.touched && infoForm.get('gender')?.invalid" class="error-message">
-              <small *ngIf="infoForm.get('gender')?.errors?.['required']">El género es obligatorio.</small>
+            <div *ngIf="infoForm.get('genero')?.touched && infoForm.get('genero')?.invalid" class="error-message">
+              <small *ngIf="infoForm.get('genero')?.errors?.['required']">El género es obligatorio.</small>
             </div>
-  
+           <!--  <label for="telefono">Número de Teléfono:</label>
+            <input
+              type="text"
+              id="telefono"
+              formControlName="telefono"
+              placeholder="Escribe tu número de teléfono"
+            />
+            <div *ngIf="infoForm.get('telefono')?.touched && infoForm.get('telefono')?.invalid" class="error-message">
+              <small *ngIf="infoForm.get('telefono')?.errors?.['required']">El número de teléfono es obligatorio.</small>
+              <small *ngIf="infoForm.get('telefono')?.errors?.['pattern']">El número de teléfono debe tener 10 dígitos.</small>
+            </div> -->
             <div class="buttons">
               <button type="submit" [disabled]="infoForm.invalid" id="continueButton" class="continueButton">Continuar</button>
             </div>

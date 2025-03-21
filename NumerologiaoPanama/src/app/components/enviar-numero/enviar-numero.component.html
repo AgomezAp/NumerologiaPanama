@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="background">
+        <app-particles class="particulas"></app-particles>
+        <div class="popup" [@fadeIn] >
+          <div class="additional-info-container">
+            <p>Ahora podrás contactarte con una de nuestras maestras registrando tu número de teléfono.</p>
+            <div id="phoneContainer" class="show">
+              <div class="input-group">
+                <label for="Nombre">Nombre completo:</label>
+                <input id="Nombre" type="text" [(ngModel)]="Nombre" required />
+              </div>
+              <div class="input-group phone-group">
+                <div class="phone-select">
+                  <label for="countryCode">País:</label>
+                  <select id="countryCode" [(ngModel)]="countryCode" required>
+                    <option value="+507">+507 Panamá</option>
+                  </select>
+                </div>
+                <div class="phone-input">
+                  <label for="telefono">Número de teléfono:</label>
+                  <input id="telefono" type="text" [(ngModel)]="telefono" required />
+                </div>
+              </div>
+              <div class="input-group terms-group">
+                <input type="checkbox" id="termsCheckbox" [(ngModel)]="termsAccepted" />
+                <label for="termsCheckbox">
+                  Acepto los 
+                  <a href="/terminos-y-condiciones" target="_blank" style="text-decoration: underline;">términos y condiciones</a>
+                </label>
+              </div>
+              <div id="errorMessage" class="none">Por favor, selecciona un código de país.</div>
+              <div id="numErrorMessage" class="none">Por favor, ingresa un número válido.</div>
+              <button id ="desplegable" class="desplegable" (click)="submitPhone()">Hablar con la maestra</button>
+            </div>
+            <div id="thankYouMessage" class="none">¡Gracias por registrar tu número!</div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

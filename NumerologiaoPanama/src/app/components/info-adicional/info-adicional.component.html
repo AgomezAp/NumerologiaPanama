@@ -9,8 +9,8 @@
       <!-- Formulario de información adicional -->
       <form [formGroup]="additionalInfoForm" (ngSubmit)="onSubmit()">
         <!-- Campo: Estado de Ánimo -->
-        <label for="mood">¿Cómo te sientes hoy?</label>
-        <select id="mood" formControlName="mood" class="narrow-select" required>
+        <label for="estado_animo">¿Cómo te sientes hoy?</label>
+        <select id="estado_animo" formControlName="estado_animo" class="narrow-select" required>
           <option value="" disabled selected>Selecciona tu estado de ánimo</option>
           <option value="feliz">Feliz</option>
           <option value="triste">Triste</option>
@@ -18,20 +18,20 @@
           <option value="miedo">Con miedo</option>
           <option value="enojado">Enojado/a</option>
         </select>
-        <div *ngIf="additionalInfoForm.get('mood')?.invalid && (additionalInfoForm.get('mood')?.dirty || additionalInfoForm.get('mood')?.touched)" class="warning">
+        <div *ngIf="additionalInfoForm.get('estado_animo')?.invalid && (additionalInfoForm.get('estado_animo')?.dirty || additionalInfoForm.get('estado_animo')?.touched)" class="warning">
           <i class="fas fa-exclamation-circle"></i> Debes seleccionar tu estado de ánimo.
         </div>
 
         <!-- Campo: Pregunta personalizada -->
-        <label for="focus">¿Por qué te interesa tu número de la suerte?</label>
-        <select id="focus" formControlName="focus" class="narrow-select" required>
+        <label for="numero_suerte">¿Por qué te interesa tu número de la suerte?</label>
+        <select id="numero_suerte" formControlName="numero_suerte" class="narrow-select" required>
           <option value="" disabled selected>Selecciona una razón</option>
           <option value="amor">Amor</option>
           <option value="trabajo">Trabajo</option>
           <option value="salud">Salud</option>
           <option value="dinero">Dinero</option>
         </select>
-        <div *ngIf="additionalInfoForm.get('focus')?.invalid && (additionalInfoForm.get('focus')?.dirty || additionalInfoForm.get('focus')?.touched)" class="warning">
+        <div *ngIf="additionalInfoForm.get('numero_suerte')?.invalid && (additionalInfoForm.get('numero_suerte')?.dirty || additionalInfoForm.get('numero_suerte')?.touched)" class="warning">
           <i class="fas fa-exclamation-circle"></i> Debes seleccionar una razón.
         </div>
 
@@ -40,5 +40,12 @@
       </form>
     </main>
   </section>
+</div>
+
+<div id="loadingOverlay" class="loading-overlay" *ngIf="isLoading">
+  <div class="loading-content">
+    <img src="/gifCarga2.gif" alt="Cargando..." />
+    <p>En unos momentos serás redirigid&#64; a la maquina de casino</p>
+  </div>
 </div>
 </div>

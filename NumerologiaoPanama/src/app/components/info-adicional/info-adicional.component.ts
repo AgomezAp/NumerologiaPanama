@@ -17,6 +17,7 @@ import {
 import { Router } from '@angular/router';
 
 import { DataService } from '../../services/data.service';
+import { DatosService } from '../../services/datos.service';
 import { ParticlesComponent } from '../../shared/particles/particles.component';
 
 @Component({
@@ -35,11 +36,20 @@ import { ParticlesComponent } from '../../shared/particles/particles.component';
 })
 export class InfoAdicionalComponent {
   additionalInfoForm: FormGroup;
+  numero_suerte: string ='';
+  isLoading: boolean = false;
+  estado_animo: string =  '';
+  /**
+  * Constructor del componente.
+  * @param router Servicio de enrutamiento de Angular.
+  * @param fb Constructor de formularios reactivos.
+  * @param dataService Servicio para manejar los datos del formulario.
+  */
 
-  constructor(private router: Router, private fb: FormBuilder, private dataService: DataService) {
+  constructor(private router: Router, private fb: FormBuilder, private dataService: DataService,private datosService:DatosService) {
     this.additionalInfoForm = this.fb.group({
-      mood: ['', Validators.required],
-      focus: ['', Validators.required]
+      estado_animo: ['', Validators.required],
+      numero_suerte: ['', Validators.required]
     });
     const previousData = this.dataService.getFormData();
     this.additionalInfoForm.patchValue(previousData);
@@ -47,13 +57,17 @@ export class InfoAdicionalComponent {
 
 
   ngOnInit(): void { }
-
+  /**
+   * Método para manejar el envío del formulario.
+   */
   onSubmit(): void {
     console.log('Formulario enviado:', this.additionalInfoForm.value);
     if (this.additionalInfoForm.valid) {
       const formData = this.additionalInfoForm.value;
       console.log('Form Data:', formData);
       this.dataService.setFormData(formData);
+      localStorage.setItem('estado_animo', formData.estado_animo);
+      localStorage.setItem('numero_suerte', formData.numero_suerte);
       // Redirige a otra ruta si es necesario
       this.router.navigate(['/cards']);
     }

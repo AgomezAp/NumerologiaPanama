@@ -18,7 +18,9 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
-    "paypal-rest-sdk": "^1.8.1"
+    "paypal-rest-sdk": "^1.8.1",
+    "pg": "^8.14.1",
+    "sequelize": "^6.37.6"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

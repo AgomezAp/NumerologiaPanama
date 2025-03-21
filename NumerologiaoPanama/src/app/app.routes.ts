@@ -7,6 +7,9 @@ import {
   BienvenidaComponent,
 } from './components/bienvenida/bienvenida.component';
 import {
+  EnviarNumeroComponent,
+} from './components/enviar-numero/enviar-numero.component';
+import {
   InfoAdicionalComponent,
 } from './components/info-adicional/info-adicional.component';
 import { InfoComponent } from './components/info/info.component';
@@ -50,4 +53,8 @@ export const routes: Routes = [
     path: 'agradecimiento',
     component: AgradecimientoComponent,
   },
+  {
+    path:'enviar_datos',
+    component:EnviarNumeroComponent
+  }
 ];

@@ -4,68 +4,26 @@
   <h1>Resultados</h1>
   <div class="content-container" [@fadeIn]>
     <div class="result-page">
-      <p [ngClass]="{ blurred: !isPaid, 'no-select': !isPaid  }">{{ luckyDescription }}</p>
-      <h2 [ngClass]="{ blurred: !isPaid, 'no-select': !isPaid  }">
-        Numeros del Baloto: {{ luckyNumbers }}
-      </h2>
+      <p>{{ luckyDescription }}</p>
+      <h2>Numeros del Baloto: {{ luckyNumbers }}</h2>
       <div class="cards-result">
         <img
           *ngFor="let card of selectedCards"
           [src]="card.src"
           [alt]="'Carta ' + card.number"
           class="result-card"
+          (mouseover)="onCardMouseOver(card.specificDescription)"
+          (mouseout)="onCardMouseOut()"
         />
       </div>
-   <!--    <div *ngIf="hoveredDescription" class="card-description">
-        {{ hoveredDescription }}
-      </div> -->
     </div>
-    <div *ngIf="isPaid" class="result-container">
-      <div class="result-content">
-        <button class="call-to-action" (click)="showPopup()">Hablar con el maestro</button>
-      </div>
-    </div>
-    
 
-    <div *ngIf="showPopupFlag" class="overlay">
-      <div class="popup">
-        <div class="popup-content">
-          <button class="close-button" (click)="closePopup()">Cerrar</button>
-          <h2>¡Gracias por tu compra!</h2>
-          <p>Ahora podrás contactarte con uno de nuestros maestros registrando tu número de teléfono.</p>
-          <div id="phoneContainer" class="show">
-            <div class="input-group">
-              <label for="countryCode">Código de país:</label>
-              <select id="countryCode" [(ngModel)]="countryCode">
-                <option value="+57">+57 (Colombia)</option>
-                <option value="+55">+55 (Brasil)</option>
-                <option value="+56">+56 (Chile)</option>
-                <option value="+593">+593 (Ecuador)</option>
-                <option value="+51">+51 (Perú)</option>
-                <option value="+52">+52 (México)</option>
-                <option value="+591">+591 (Bolivia)</option>
-                <option value="+507">+507 (Panamá)</option>
-                <!-- Agrega más opciones según sea necesario -->
-              </select>
-            </div>
-            <div class="input-group">
-              <label for="phoneInput">Número de teléfono:</label>
-              <input id="phoneInput" type="text" [(ngModel)]="phone" />
-            </div>
-            <div id="errorMessage" class="none">Por favor, selecciona un código de país.</div>
-            <div id="numErrorMessage" class="none">Por favor, ingresa un número válido.</div>
-            <button class="desplegable" id= "desplegable" (click)="submitPhone()">Enviar mis datos y hablar con el maestro</button>
-          </div>
-          <div id="thankYouMessage" class="none">¡Gracias por registrar tu número!</div>
-        </div>
+    <div class="result-container">
+      <div class="result-content">
+        <button class="call-to-action" (click)="navigate()">
+          Hablar con la maestra
+        </button>
       </div>
-    </div>
-     
-  </div>
-  <div id="loadingOverlay" class="loading-overlay" *ngIf="isLoading">
-    <div class="loading-content">
-      <img src="/gifCarga2.gif" alt="Cargando..." />
-      <p>En unos momentos serás redirigid&#64; a la pasarela de pago</p>
     </div>
   </div>
 </div>
