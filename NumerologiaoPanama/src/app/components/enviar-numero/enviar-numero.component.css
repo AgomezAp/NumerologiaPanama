@@ -1,18 +1,20 @@
 .background {
-    background: url("/Fondo.jpg") no-repeat center center fixed;
-    background-size: cover;
-    background-position: center center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin-top: -10px;
-    margin-left: -10px;
-    margin-right: -10px;
-    margin-bottom: -10px;
-    overflow: hidden;
-  }
+  background: url("/Fondo.jpg") no-repeat center center fixed;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
   .particulas{
     position: absolute;
     z-index: 1;
